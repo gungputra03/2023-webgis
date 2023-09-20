@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Map</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        /* CSS styling for the map container */
+        #map {
+            width: 100%; /* Mengisi seluruh lebar layar */
+            height: 800px; /* Tinggi peta */
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        // Inisialisasi peta
+        var map = L.map('map').setView([-7.763940951038107, 110.37268767080064], 13); // [Latitude, Longitude, Zoom Level]
+
+        // Tambahkan tile layer (misalnya, OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Tambahkan marker
+        var marker = L.marker([-7.763940951038107, 110.37268767080064]).addTo(map); // [Latitude, Longitude]
+        
+        // Tambahkan pop-up pada marker
+        marker.bindPopup("<b>Halo, ini adalah tempat kamu berkuliah saat ini!</b><br>Selamat datang ke web map.").openPopup();
+    </script>
+</body>
+</html>
